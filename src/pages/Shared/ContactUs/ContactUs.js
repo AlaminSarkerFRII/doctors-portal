@@ -29,7 +29,7 @@ const ContactUs = () => {
           ></textarea>
         </div>
       </div>
-      <div className="text-center">
+      <div className="text-center py-2">
         <PrimaryButton>Submit</PrimaryButton>
       </div>
     </section>
