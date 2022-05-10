@@ -12,12 +12,12 @@ const Appointments = () => {
       <div className="flex-1 hidden lg:block">
         <img className="mt-[-130px]" src={doctor} alt="" />
       </div>
-      <div className="text-center flex-1 ">
+      <div className="text-center flex-1 px-5">
         <h3 className="text-primary font-bold ">Appointment</h3>
         <h2 className="text-4xl font-bold text-white">
           Make an appointment Today
         </h2>
-        <p className="text-white">
+        <p className="text-white py-3">
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout. The point of
           using Lorem Ipsumis that it has a more-or-less normal distribution of
@@ -25,7 +25,9 @@ const Appointments = () => {
           look like readable English. Many desktop publishing packages and web
           page
         </p>
-        <PrimaryButton>Get Started</PrimaryButton>
+        <div className="py-2">
+          <PrimaryButton>Get Started</PrimaryButton>
+        </div>
       </div>
     </section>
   );
