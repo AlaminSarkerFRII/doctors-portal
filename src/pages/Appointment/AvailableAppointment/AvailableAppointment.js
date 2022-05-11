@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { format } from "date-fns";
 import AppointmentService from "../AppointmentService/AppointmentService";
+import BookingModal from "../BookingModal/BookingModal";
 
 const AvailableAppointment = ({ selected }) => {
+  // for modal
+
+  const [treatment, setTreatment] = useState(null);
+
   // set services
   const [services, setServices] = useState([]);
   useEffect(() => {
@@ -20,9 +25,11 @@ const AvailableAppointment = ({ selected }) => {
           <AppointmentService
             key={service._id}
             service={service}
+            setTreatment={setTreatment}
           ></AppointmentService>
         ))}
       </div>
+      {treatment && <BookingModal treatment={treatment}></BookingModal>}
     </div>
   );
 };
