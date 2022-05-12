@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import {
+  useAuthState,
   useCreateUserWithEmailAndPassword,
-  useSignInWithEmailAndPassword,
   useSignInWithGoogle,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import { useForm } from "react-hook-form";
 import Loading from "../../Shared/Loading/Loading";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   // form set
@@ -26,6 +26,7 @@ const SignUp = () => {
 
   // update profile
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const navigate = useNavigate();
 
   let SignUpError;
 
@@ -48,6 +49,7 @@ const SignUp = () => {
     console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
+    navigate("/appointment");
   };
   return (
     <div className="flex h-screen justify-center items-center">
