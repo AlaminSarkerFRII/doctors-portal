@@ -5,6 +5,8 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
 import { useForm } from "react-hook-form";
+import Loading from "../../Shared/Loading/Loading";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   // google sign in
@@ -22,18 +24,19 @@ const Login = () => {
     handleSubmit,
   } = useForm();
 
-  if (error) {
-    return (
-      <div>
-        <p>Error: {error.message}</p>
-      </div>
+  let signInError;
+
+  if (error || gError) {
+    signInError = (
+      <p className="text-red-200"> {error?.message || gError?.message}</p>
     );
   }
-  if (loading) {
-    return <p>Loading...</p>;
+  if (loading || gLoading) {
+    return <Loading />;
   }
-  if (gUser) {
-    console.log(gUser);
+
+  if (user || gUser) {
+    console.log(user, gUser);
   }
 
   // submit form
@@ -113,18 +116,26 @@ const Login = () => {
                 )}
               </label>
             </div>
-
+            {signInError}
             <input
               className="btn w-full max-w-xs"
               type="submit"
               value="Login"
             />
           </form>
+          <p>
+            <small>
+              New to Doctors Portal?
+              <Link to="/signup" className="text-primary">
+                Create A New Account
+              </Link>
+            </small>
+          </p>
           <div className="divider">OR</div>
           <div className="text-center py-5">
             <button
               onClick={() => signInWithGoogle()}
-              className="btn btn-outline "
+              className="btn btn-outline"
             >
               SignIn With Google
             </button>
