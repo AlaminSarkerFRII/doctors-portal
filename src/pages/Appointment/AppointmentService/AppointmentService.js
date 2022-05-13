@@ -20,7 +20,7 @@ const AppointmentService = ({ service, setTreatment }) => {
         <p>If a dog chews shoes whose shoes does he choose?</p>
         <div className="card-actions justify-center">
           <label
-            for="booking-modal"
+            htmlFor="booking-modal"
             disabled={slots.length === 0}
             className="btn btn-sm btn-secondary uppercase"
             onClick={() => setTreatment(service)}

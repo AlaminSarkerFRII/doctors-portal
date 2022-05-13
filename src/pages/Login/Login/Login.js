@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
@@ -29,6 +29,14 @@ const Login = () => {
 
   let from = location.state?.from?.pathname || "/";
 
+  // use user effect
+
+  useEffect(() => {
+    if (user || gUser) {
+      navigate(from, { replace: true });
+    }
+  }, [user, gUser, from, navigate]);
+
   let signInError;
 
   if (error || gError) {
@@ -40,10 +48,6 @@ const Login = () => {
     return <Loading />;
   }
 
-  if (user || gUser) {
-    navigate(from, { replace: true });
-  }
-
   // submit form
 
   const onSubmit = (data) => {
@@ -51,10 +55,10 @@ const Login = () => {
     signInWithEmailAndPassword(data.email, data.password);
   };
   return (
-    <div className="flex h-screen justify-center items-center">
-      <div class="card w-96 bg-base-100 shadow-xl">
-        <div class="card-body">
-          <h2 class="text-center text-2xl">Login</h2>
+    <div className="flex h-screen justify-center items-center my-16">
+      <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card-body">
+          <h2 className="text-center text-2xl">Login</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-control w-full max-w-xs">
               <label className="label">
