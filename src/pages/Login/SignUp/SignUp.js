@@ -32,7 +32,9 @@ const SignUp = () => {
 
   if (error || gError || updateError) {
     SignUpError = (
-      <p className="text-red-200"> {error?.message || gError?.message}</p>
+      <p className="text-red-200">
+        {error?.message || gError?.message || updateError?.message}
+      </p>
     );
   }
   if (loading || gLoading || updating) {
@@ -46,10 +48,11 @@ const SignUp = () => {
   // submit form
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
     navigate("/appointment");
+    console.log("update done");
   };
   return (
     <div className="flex h-screen justify-center items-center">
