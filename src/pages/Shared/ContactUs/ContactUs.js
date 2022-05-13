@@ -12,20 +12,20 @@ const ContactUs = () => {
         </h2>
       </div>
       <div className="flex items-center justify-center">
-        <div className="form-control mb-4">
+        <div className="form-control  w-full max-w-xs mb-4">
           <input
             type="email"
             placeholder="write your email"
-            className="input input-bordered  w-80 h-14 mb-2"
+            className="input input-bordered w-full max-w-xs mb-2 "
           />
           <input
             type="text"
             placeholder="Type here"
-            className="input input-bordered  w-80 h-14 mb-2"
+            className="input input-bordered w-full max-w-xs mb-2 "
           />
           <textarea
-            className="textarea textarea-bordered mb-2"
-            placeholder="Bio"
+            className="textarea textarea-bordered mb-2 "
+            placeholder="write your massage"
           ></textarea>
         </div>
       </div>

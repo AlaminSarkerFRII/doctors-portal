@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import AppointmentService from "../AppointmentService/AppointmentService";
 import BookingModal from "../BookingModal/BookingModal";
 
-const AvailableAppointment = ({ selected }) => {
+const AvailableAppointment = ({ date }) => {
   // for modal
 
   const [treatment, setTreatment] = useState(null);
@@ -18,7 +18,7 @@ const AvailableAppointment = ({ selected }) => {
   return (
     <div>
       <h2 className="text-secondary text-center font-bold text-3xl">
-        Available Appointment on {format(selected, "PP")}
+        Available Appointment on {format(date, "PP")}
       </h2>
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 my-4">
         {services.map((service) => (
@@ -31,7 +31,7 @@ const AvailableAppointment = ({ selected }) => {
       </div>
       {treatment && (
         <BookingModal
-          selected={selected}
+          date={date}
           treatment={treatment}
           setTreatment={setTreatment}
         ></BookingModal>
