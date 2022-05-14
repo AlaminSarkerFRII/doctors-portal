@@ -29,9 +29,14 @@ const Navbar = () => {
       <li>
         <NavLink to="/contactus">Contact</NavLink>
       </li>
+      {user && (
+        <li>
+          <NavLink to="/dashboard">Dashboard</NavLink>
+        </li>
+      )}
       <li>
         {user ? (
-          <button onClick={logout} className="btn btn-primary rounded">
+          <button onClick={logout} className="btn btn-outline rounded">
             Sign Out
           </button>
         ) : (
@@ -74,6 +79,14 @@ const Navbar = () => {
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItem}</ul>
+      </div>
+      <div className="navbar-end">
+        <label
+          for="my-drawer-2"
+          className="btn btn-primary drawer-button lg:hidden"
+        >
+          SideBar
+        </label>
       </div>
     </div>
   );
