@@ -19,7 +19,7 @@ const MyAppointments = () => {
         },
       })
         .then((res) => {
-          console.log("res", res);
+          // console.log("res", res);
           if (res.status === 401 || res.status === 403) {
             // loagout kore dibo
             signOut(auth);
@@ -34,7 +34,7 @@ const MyAppointments = () => {
           setAppointments(data);
         });
     }
-  }, [user]);
+  }, [user, navigate]);
 
   return (
     <div className="mb-2">
@@ -44,7 +44,7 @@ const MyAppointments = () => {
         <table class="table w-full">
           <thead>
             <tr>
-              <th></th>
+              <th>Sl. No</th>
               <th>Name</th>
               <th>Date</th>
               <th>Time</th>
