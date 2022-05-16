@@ -84,7 +84,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <label
-          for="my-drawer-2"
+          htmlFor="my-drawer-2"
           className="btn btn-primary drawer-button lg:hidden"
         >
           SideBar
