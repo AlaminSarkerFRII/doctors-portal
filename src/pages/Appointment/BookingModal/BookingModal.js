@@ -26,7 +26,7 @@ const BookingModal = ({ date, treatment, setTreatment, refetch }) => {
 
     // post booking data
 
-    fetch("http://localhost:5000/booking", {
+    fetch("https://polar-fjord-97375.herokuapp.com/booking", {
       method: "POST",
       headers: {
         "content-type": "application/json",

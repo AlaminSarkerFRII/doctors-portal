@@ -10,26 +10,23 @@ const AvailableAppointment = ({ date }) => {
   const [treatment, setTreatment] = useState(null);
   const formattedDate = format(date, "PP");
 
-  //code exchange with usEffect
-
   const {
     data: services,
     isLoading,
     refetch,
   } = useQuery(["available", formattedDate], () =>
-    fetch(`http://localhost:5000/available?date=${formattedDate}`).then((res) =>
-      res.json()
-    )
+    fetch(
+      `https://polar-fjord-97375.herokuapp.com/available?date=${formattedDate}`
+    ).then((res) => res.json())
   );
 
   if (isLoading) {
     return <Loading></Loading>;
   }
 
-  // set services
   // const [services, setServices] = useState([]);
   // useEffect(() => {
-  //   fetch(`http://localhost:5000/available?date=${formattedDate}`)
+  //   fetch(`https://polar-fjord-97375.herokuapp.com/available?date=${formattedDate}`)
   //     .then((res) => res.json())
   //     .then((data) => setServices(data));
   // }, [formattedDate]);
