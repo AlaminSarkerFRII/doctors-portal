@@ -3,12 +3,15 @@ import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
 import Loading from "../../Shared/Loading/Loading";
 
+import { toast } from "react-toastify";
+
 const AddDoctor = () => {
   // form set
   const {
     register,
     formState: { errors },
     handleSubmit,
+    reset,
   } = useForm();
   //use query for load
 
@@ -20,8 +23,52 @@ const AddDoctor = () => {
     return <Loading />;
   }
 
+  // image Api key from imgbb
+  const imageStorageKey = "80fac58c0df7350483a0deb37b2e8301";
+
   const onSubmit = async (data) => {
-    console.log(data);
+    const image = data.image[0];
+
+    const formData = new FormData();
+    formData.append("image", image);
+
+    const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.success) {
+          const img = result.data.url;
+          const doctor = {
+            name: data.name,
+            email: data.email,
+            specialty: data.specialty,
+            img: img,
+          };
+          // send to your data base
+
+          fetch("http://localhost:5000/doctor", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(doctor),
+          })
+            .then((res) => res.json())
+            .then((inserted) => {
+              if (inserted.insertedId) {
+                toast.success("Doctor Added Successfully");
+                reset();
+              } else {
+                toast.error("Failed to aad doctors");
+              }
+            });
+        }
+      });
   };
 
   return (
