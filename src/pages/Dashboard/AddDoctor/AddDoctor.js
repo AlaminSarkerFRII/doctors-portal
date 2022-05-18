@@ -16,7 +16,9 @@ const AddDoctor = () => {
   //use query for load
 
   const { data: services, isLoading } = useQuery("services", () =>
-    fetch("http://localhost:5000/service").then((res) => res.json())
+    fetch("https://polar-fjord-97375.herokuapp.com/service").then((res) =>
+      res.json()
+    )
   );
 
   if (isLoading) {
@@ -50,7 +52,7 @@ const AddDoctor = () => {
           };
           // send to your data base
 
-          fetch("http://localhost:5000/doctor", {
+          fetch("https://polar-fjord-97375.herokuapp.com/doctor", {
             method: "POST",
             headers: {
               "content-type": "application/json",
