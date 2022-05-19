@@ -1,5 +1,7 @@
 import React from "react";
 import { toast } from "react-toastify";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { FaUserEdit } from "react-icons/fa";
 
 const DoctorRow = ({ doctor, index, refetch }) => {
   const { name, specialty, img, email } = doctor;
@@ -13,7 +15,10 @@ const DoctorRow = ({ doctor, index, refetch }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.deletedCount) {
+        if (
+          data.deletedCount &&
+          window.confirm("Are you sure want to delete?")
+        ) {
           toast.success(`Doctor:${name} is Deleted Successfully`);
           refetch();
         }
@@ -33,12 +38,20 @@ const DoctorRow = ({ doctor, index, refetch }) => {
       <td>{name}</td>
       <td>{specialty}</td>
       <td>
-        <button
-          onClick={() => handleDeleted(email)}
-          class="btn btn-xs btn-error"
-        >
-          delete
-        </button>
+        <div className="flex justify-center items-center w-full">
+          <button onClick={() => handleDeleted(email)}>
+            <RiDeleteBin6Line
+              title="Delete"
+              className="mr-4 text-2xl text-error font-bold"
+            />
+          </button>
+          <button>
+            <FaUserEdit
+              title="Edit"
+              className="text-2xl text-error font-bold"
+            />
+          </button>
+        </div>
       </td>
     </tr>
   );

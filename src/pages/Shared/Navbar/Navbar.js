@@ -31,6 +31,14 @@ const Navbar = () => {
       <li>
         <NavLink to="/contactus">Contact</NavLink>
       </li>
+      <li>
+        <NavLink to="/contactus">
+          <button
+            data-toggle-theme="dark,light"
+            data-act-class="ACTIVECLASS"
+          ></button>
+        </NavLink>
+      </li>
       {user && (
         <li>
           <NavLink to="/dashboard">Dashboard</NavLink>
