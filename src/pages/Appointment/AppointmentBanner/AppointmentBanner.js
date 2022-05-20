@@ -13,7 +13,7 @@ const AppointmentBanner = ({ date, setDate }) => {
           alt="Dentist chair"
         />
         <div>
-          <DayPicker mode="single" selected={date} onSelect={setDate} />
+          <DayPicker mode="single" selected={date} onDayClick={setDate} />
         </div>
       </div>
     </div>

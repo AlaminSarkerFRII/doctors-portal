@@ -15,7 +15,7 @@ const AppointmentService = ({ service, setTreatment }) => {
           )}
         </p>
         <p>
-          {slots.length} {slots.length ? "Spaces" : "space"} Available
+          {slots.length} {slots.length > 1 ? "Spaces" : "space"} Available
         </p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia,

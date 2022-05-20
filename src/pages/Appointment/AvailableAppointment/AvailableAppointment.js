@@ -23,13 +23,6 @@ const AvailableAppointment = ({ date }) => {
   if (isLoading) {
     return <Loading></Loading>;
   }
-
-  // const [services, setServices] = useState([]);
-  // useEffect(() => {
-  //   fetch(`https://polar-fjord-97375.herokuapp.com/available?date=${formattedDate}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setServices(data));
-  // }, [formattedDate]);
   return (
     <div className="my-10">
       <h2 className="text-secondary text-center font-bold text-3xl">
